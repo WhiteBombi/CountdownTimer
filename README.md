@@ -6,7 +6,7 @@ CountdownTimer
 CountdownTimer is a simple timer written in Python 3, that spits out a text string in a .txt file in the same directory.
 
 #### Important for non-Windows users!
-Command line/terminal clearing is only enabled to work on a Windows operating system. If you encounter errors on Linux or Mac, switch the line 33 in 'timer.py' from ```os.system('cls')``` to ```os.system('clear')``` Be careful not to change indentation in the line. (The line should have 8 spaces behind it.)
+Command line/terminal clearing is only enabled to work on a Windows operating system. If you encounter errors on Linux or Mac, switch the line 40 in 'timer.py' from ```os.system('cls')``` to ```os.system('clear')``` Be careful not to change indentation in the line. (The line should have 8 spaces behind it.)
 
 #### Use case
 The script has been created to be used in OBS or similar video broadcast software in order to achieve a countdown timer using a text source. By doing this, user is left to easily make custom text formatting of their choice.
@@ -26,6 +26,6 @@ The script itself has commented out lines that can be used to provide further cu
 
 | Feature          | Used for                | Line number  |
 | ---------------- |:------------------------| :-----------:|
-| reduction              | Amount of seconds reduced from the timer at each tick.                                        |      49      |
-| tick             | Speed at which new time is processed within the script.                                      |      52      |
-| printClearEnable | Whether or not the command line/terminal is cleared after each tick. Useful to turn off if the testing in an IDE.           |      56      |
+| reduction              | Amount of seconds reduced from the timer at each tick.                                        |      55      |
+| tick             | Speed at which new time is processed within the script.                                      |      58      |
+| printClearEnable | Whether or not the command line/terminal is cleared after each tick. Useful to turn off if the testing in an IDE.           |      62      |
