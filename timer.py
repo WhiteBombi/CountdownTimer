@@ -2,7 +2,7 @@
 # Author             :  WhiteBombo
 # Created            :  July 6th 2017
 # Last modified      :
-# Version            :  1.0
+# Version            :  1.01
 # Description        :  Timer that writes remaining time in a file in same directory.
 
 from datetime import datetime, timedelta
@@ -49,7 +49,7 @@ def kill():
 # Initial countdown time calculation
 defaultCountdown = 10
 now = datetime.now
-cdTime = int(float(raw_input('How many minutes? (Default: {}) '.format(defaultCountdown)) or 10) * 60)
+cdTime = int(float(input('How many minutes? (Default: {}) '.format(defaultCountdown)) or 10) * 60)
 
 # Amount of seconds reduced from countdown per tick
 reduction = 1
