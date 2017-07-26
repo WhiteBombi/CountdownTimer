@@ -2,27 +2,13 @@
 # Author             :  WhiteBombo
 # Created            :  July 6th 2017
 # Last modified      :
-# Version            :  1.01
+# Version            :  1.2.1
 # Description        :  Timer that writes remaining time in a file in same directory.
 
 from datetime import datetime, timedelta
 from time import sleep
 import os, sys
-
-## String dictionaries
-formats = {
-        'singleSeconds': '{}',
-        'fullSeconds': '{}:{}',
-        'paddedSeconds': '{}:0{}',
-        }
-
-dots = {
-        0: '.    ',
-        1: '..   ',
-        2: '...  ',
-        3: '.... ',
-        4: '.....'
-        }
+from settings import *
 
 ## String processing functions
 def spit(minutes, seconds):
@@ -37,32 +23,27 @@ def spit(minutes, seconds):
 
 def cmdPrint(i, printClearEnable):
     if printClearEnable == True:
-        os.system('cls')
-    print('Script running{} [{}]'.format(dots[i], output))
+        os.system(clear)
+    print('Script running{} [{}] (Please only shut me down using ctrl + c)'.format(dots[i], output))
 
 def kill():
     file = open("timer.txt", "w")
-    file.write(' ')
+    file.write(finishMessage)
     file.close()
 
-## Settings
 # Initial countdown time calculation
-defaultCountdown = 10
-now = datetime.now
-cdTime = int(float(input('How many minutes? (Default: {}) '.format(defaultCountdown)) or 10) * 60)
-
-# Amount of seconds reduced from countdown per tick
-reduction = 1
-#reduction = raw_input('Reduction per second? (Default: 1 s) ') or 1
-# Amount of time between each tick
-tick = 1
-#tick = 1 / (raw_input('Tickrate? (Default: 1 tick/sec) ') or 1)
-# Cmd line output counter needs an integer
-i = 0
-printClearEnable = True
-#printClearEnable = raw_input('Show only one line in command line? (Default: True) ') or True
+if topOfHour == True:
+    now = datetime.now
+    cdTime = datetime(year=now().year,
+                         month=now().month,
+                         day=now().day,
+                         hour=now().hour + 1) - now()
+    cdTime = cdTime.seconds
+else:
+    cdTime = int(float(input('How many minutes? (Default: {}) '.format(defaultCountdownTime)) or 10) * 60)
 
 ## Actual process
+i = 0
 try:
     while True:
         # Divide countdown time into minutes and seconds
@@ -71,7 +52,7 @@ try:
 
         # Formats, writes and outputs strings
         file = open("timer.txt", "w")
-        if minutes <= 0 and seconds < reduction: # Exit condition
+        if minutes <= 0 and seconds < reductionAmount: # Normal exit condition
             file.write('0')
             file.close()
             sleep(tick)
@@ -86,14 +67,15 @@ try:
             cmdPrint(i, False)
         i = (i + 1) % len(dots)
 
-        cdTime -= reduction
+        cdTime -= reductionAmount
         sleep(tick)
-except KeyboardInterrupt:
+#except KeyboardInterrupt:
+except:
     kill()
-    print('buh bye')
+    print('Timer cancelled. Output set to "finished" value. (See settings.py to change it.)')
     sleep(tick)
     sys.exit()
 
 kill()
-print('Program terminated. Until we meet again. ~')
+print('Countdown finished. Output set to "finished" value. (See settings.py to change it.)')
 sleep(5)

@@ -49,3 +49,4 @@ Temporary Items
 debug.log
 timer.txt
 topOfHour.txt
+__pycache__
