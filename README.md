@@ -22,7 +22,7 @@ Made using Python 3.6.2rc2 as a runtime environment. The script will not work wi
 #### How to use
 Once you have [Python 3](https://www.python.org) installed, all you need to do is run the script with it. Once the script has been started, you may enter a countdown time in minutes. (If the initial countdown time is left blank, timer will be set for 10 minutes.)
 
-If you wish to countdown to a top of the hour, you may change the setting ```True``` in 'settings.py'. When this is enabled, you cannot enter a custom time.
+If you wish to countdown to the *top of the hour*, you may change the setting ```True``` in 'settings.py'. When this is enabled, you cannot enter a custom time.
 
 Once the program has been given a time (default or custom), it will begin to write to a 'timer.txt'-file in the same directory as the script is in. Custom time will be given in minutes, but also supports float values (e.g. 0.5 for 30 seconds).
 
