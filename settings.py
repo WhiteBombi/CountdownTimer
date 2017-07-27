@@ -2,17 +2,37 @@
 # Author             :  WhiteBombo
 # Created            :  July 26th 2017
 # Last modified      :
-# Version            :  1.0
+# Version            :  1.1
 # Description        :  Settings file for timer.py.
+from random import choice
 
-# Timer settings:
-topOfHour = False         # Force timer to countdown to top of hour (True/False)
-finishMessage = ' '       # What is displayed when the timer runs out
-defaultCountdownTime = 10 # Default countdown time in minutes
-reductionAmount = 1       # How many seconds are reduced at each tick
-tick = 1                  # How long is one tick in seconds
+''' TIMER SETTINGS: '''
+    # Force timer to countdown to top of hour (True/False)
+topOfHour = False
 
-# String dictionaries
+    # Default countdown time in minutes
+defaultCountdownTime = 10
+
+    # How many seconds are reduced at each tick
+reductionAmount = 1
+
+    # How long is one tick in seconds
+tick = 1
+
+    # What is displayed when the timer runs out. Replace, add or remove lines as needed.
+    # Random choices from the list below.
+finishMessage = choice([
+    'WOO',
+    'NOW',
+    'READY',
+    'GO',
+    'PEANUTS',
+    ])
+    # Permanent choice. Overrides the list above. (Remove the # from the line below)
+#finishMessage = ' '
+
+
+''' STRING DICTIONARIES: '''
     # Customize time format to your liking
 formats = {
         'singleSeconds': '{}',
@@ -21,17 +41,19 @@ formats = {
         }
 
     # Add some dots or take away or whatever, mhm..
-dots = {
-        0: '.    ',
-        1: '..   ',
-        2: '...  ',
-        3: '.... ',
-        4: '.....'
-        }
+dots = [
+        '.    ',
+        '..   ',
+        '...  ',
+        '.... ',
+        '.....',
+        ]
 
-# Developer settings:
-printClearEnable = True  # Is terminal cleared every tick
-clear = 'cls'            # Terminal clearing command. Use 'cls' for windows, 'clear' for linux systems.
+''' DEVELOPER SETTINGS: '''
+    # Is terminal cleared every tick (True/False)
+printClearEnable = True
+    # Terminal clearing command. Use 'cls' for windows, 'clear' for linux systems.
+clear = 'cls'            
     # Query variables:
 #reductionAmount = raw_input('Reduction per second? (Default: 1 s) ') or 1
 #tick = 1 / (raw_input('Tickrate? (Default: 1 tick/sec) ') or 1)
